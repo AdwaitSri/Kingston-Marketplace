@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <h1>
-        Welcome to the React app! Ok this is a test (james branch).
+        Welcome to the React app! 
       </h1>
     </div>
   );
