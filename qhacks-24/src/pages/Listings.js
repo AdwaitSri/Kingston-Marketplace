@@ -125,16 +125,16 @@ export default function Listings() {
                     className="w-full"
                 >
                     <div 
-                        className="w-full h-[250px] bg-[#f7f7f7] flex items-center"
+                        className="w-full h-[200px] bg-[#f7f7f7] flex items-center"
                     >
                         <img src="/images/logo.png" alt="placeholder" className="h-[80%]"/>
-                        <div className='h-full w-full p-[10px] mt-[50px] relative'>
+                        <div className='h-full w-full p-[10px] mt-[15px] relative'>
                             <p className="font-jose font-bold text-[36px] tracking-tight h-[25%]">{data.title}</p>
                             <p className="font-jose text-[22px] tracking-tight">Condition: {getCondition(data.condition)}</p>
                             <p className="font-jose text-[22px] relative top-[-3px] tracking-tight">Seller: {sellerName}</p>
                             <p className="font-jose text-[22px] relative top-[-7px] tracking-tight">Location: {data.postalcode}</p>
                             <p className="font-jose text-[22px] relative top-[-10px] tracking-tight">Category: {getCategory(data.category) ? getCategory(data.category) : "???"}</p>
-                            <p className="font-jose text-[36px] relative top-[-30px] right-[10px] text-[#237515] float-right tracking-tight">Price: ${data.price}</p>
+                            <p className="font-jose text-[36px] relative top-[-50px] right-[10px] text-[#237515] float-right tracking-tight">Price: ${data.price}</p>
                         </div>
                     </div>
                 </Link>
