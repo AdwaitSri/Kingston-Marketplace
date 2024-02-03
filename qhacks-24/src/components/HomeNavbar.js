@@ -7,28 +7,33 @@ export default function HomeNavbar() {
             id="homeNavbarContainer"
             className="h-[70px] font-jose bg-orange-1 flex items-center justify-between"
         >
-            {/*  maybe add a logo div here that links back to homepage */}
             <div
-                className="w-[230px] pl-[10px] font-semibold flex items-center justify-between h-[100%]"
+                className="w-[230px] flex items-center font-semibold h-full"
             >
-                <img
-                    src="/images/logo.png"
-                    alt="logo"
-                    className="h-[70%]"
-                />
+                <div className='p-3'>
+                    <Link to="/" className="w-[80px]">
+                        <img
+                            src="/images/logo.png"
+                            alt="logo"
+                            className="w-fit"
+                        />
+                    </Link>
+                </div>
 
-                <Link 
-                    to="/listings"
-                    className="text-xl"
-                >
-                    Listings
-                </Link>
-                <Link 
-                    to="/about"
-                    className="text-xl"
-                >
-                    About
-                </Link>
+                <div className="flex">
+                    <Link 
+                        to="/listings"
+                        className="text-xl hover:underline pr-4"
+                    >
+                        Listings
+                    </Link>
+                    <Link 
+                        to="/about"
+                        className="text-xl hover:underline"
+                    >
+                        About
+                    </Link>
+                </div>
             </div>
             <div
                 className="flex items-center justify-between mr-[20px] w-[230px]"
@@ -46,9 +51,6 @@ export default function HomeNavbar() {
                     Log In
                 </Link>
             </div>
-
-
-
 
         </div> 
     )
