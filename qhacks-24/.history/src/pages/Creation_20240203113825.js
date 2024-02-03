@@ -187,23 +187,19 @@ export default function Creation() {
                         </div>
                     </div>
 
-                    <div className="font-jose flex w-[70%] mx-auto my-[20px] justify-between items-center">
-                        <div className='border-2 border-solid border-black rounded-[20px] bg-[#2a2902] text-[#ffffff]'>
-                            <button
-                                type="button"
-                                className="font-jose bg-[#2a2902] font-semibold py-2 px-8 focus:outline-none focus:shadow-outline"
-                            >
-                                Cancel
-                            </button>
-                        </div>
-                        <div className='border-2 border-solid border-black rounded-[20px] bg-[#2a2902] text-[#ffffff]'>
-                            <button
-                                type="submit"
-                                className="font-jose font-semibold py-2 px-8 rounded focus:outline-none focus:shadow-outline"
-                            >
-                                Confirm
-                            </button>
-                        </div>
+                    <div className="font-jose flex w-[50%] mx-auto mt-[20px] justify-between items-center">
+                        <button
+                            type="button"
+                            className="font-jose bg-[#2a2902] border-2 border-solid border-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            type="submit"
+                            className="font-jose bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        >
+                            Confirm
+                        </button>
                     </div>
                 </form>
             </div>

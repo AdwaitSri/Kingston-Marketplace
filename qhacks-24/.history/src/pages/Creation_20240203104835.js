@@ -11,7 +11,12 @@ export default function Creation() {
     const [price, setPrice] = React.useState('');
 
     const [condition, setCondition] = React.useState(
-        ["", "", "", ""]
+        {
+            option1: "",
+            option2: "",
+            option3: "",
+            option4: "",
+        }
     )
 
     const sellerName = "clown";  // ! IMPORTANT ! CHANGE TO THE USER'S NAME AFTERWARDS
@@ -36,32 +41,14 @@ export default function Creation() {
         setCondition(prevCondition => {
             let newCondition = "";
             const target = event.target.id;
-
-
-            if (prevCondition[target] === "") {
+            if (prevCondition.target === '') {
                 newCondition = "checked";
             } 
-
-            let newState = ["", "", "", ""];
-            newState[target] = newCondition;
-            return newState;
-        })
-    }
-
-    function getCondition() {
-        let name = "";
-        let index = -1;
-        for (let i = 0; i < condition.length; i++) {
-            if (condition[i] !== '') {
-                index = i;
-                break;
+            return {
+                ...prevCondition,
+                [event.target.id]: newCondition,
             }
-        }
-        const conditions = ["Brand New", "Like New", "Lightly Used", "Used"];
-        if (index >= 0) {
-            name = conditions[index];
-        }
-        return name;
+        })
     }
     
     return (
@@ -107,19 +94,19 @@ export default function Creation() {
                     <span className="font-jose text-gray-700 text-sm font-semibold mt-[11px]">Condition</span>
                     <div className="mt-2 w-[80%]">
                         <label className="font-jose inline-flex items-center">
-                        <input type="radio" className="form-radio" name="condition" id="0" value="Brand New" onChange={handleConditionChange} checked={condition[0]}/>
+                        <input type="radio" className="form-radio" name="condition" id="option1" value="Brand New" onChange={handleConditionChange} checked={condition.option1}/>
                         <span className="font-jose ml-2">Brand New</span>
                         </label>
                         <label className="font-jose inline-flex items-center ml-6">
-                        <input type="radio" className="form-radio" name="condition" id="1" value="Like New" onChange={handleConditionChange} checked={condition[1]}/>
+                        <input type="radio" className="form-radio" name="condition" id="option2" value="Like New" onChange={handleConditionChange} checked={condition.option2}/>
                         <span className="font-jose ml-2">Like New</span>
                         </label>
                         <label className="font-jose inline-flex items-center ml-6">
-                        <input type="radio" className="form-radio" name="condition" id="2" value="Lightly Used" onChange={handleConditionChange} checked={condition[2]}/>
+                        <input type="radio" className="form-radio" name="condition" id="option3" value="Lightly Used" onChange={handleConditionChange} checked={condition.option3}/>
                         <span className="font-jose ml-2">Lightly Used</span>
                         </label>
                         <label className="font-jose inline-flex items-center ml-6">
-                        <input type="radio" className="form-radio" name="condition" id="3" value="Used" onChange={handleConditionChange} checked={condition[3]}/>
+                        <input type="radio" className="form-radio" name="condition" id="option4" value="Used" onChange={handleConditionChange} checked={condition.option4}/>
                         <span className="font-jose ml-2">Used</span>
                         </label>
                     </div>
@@ -176,34 +163,27 @@ export default function Creation() {
                         <div 
                             className="w-4/5 h-[100px] bg-[#f7f7f7] flex items-center"
                         >
-                            <img src="/images/logo.png" alt="placeholder" className="h-[80%]"/>
-                            <div className='h-full w-full p-[10px] relative'>
-                                <p className="font-jose font-bold tracking-tight h-[25%]">{title ? title : "Placeholder Title"}</p>
-                                <p className="font-jose text-[12px] tracking-tight">Condition: {getCondition()}</p>
-                                <p className="font-jose text-[12px] relative top-[-3px] tracking-tight">Seller: {sellerName}</p>
-                                <p className="font-jose text-[12px] relative top-[-7px] tracking-tight">Location: {postalCode ? postalCode : "Placeholder Location"}</p>
-                                <p className="font-jose text-[20px] relative top-[-20px] text-[#237515] float-right tracking-tight">Price: ${price ? price : "Placeholder Price"}</p>
+                            <img src="/images/logo.png" alt="placeholder" className="w-[20%]"/>
+                            <div className='h-full w-[80%] p-[10px]'>
+                                <p className="font-jose font-bold tracking-tight h-[20%]">{title}</p>
+                                <p className="font-jose font-bold tracking-tight">test</p>
                             </div>
                         </div>
                     </div>
 
-                    <div className="font-jose flex w-[70%] mx-auto my-[20px] justify-between items-center">
-                        <div className='border-2 border-solid border-black rounded-[20px] bg-[#2a2902] text-[#ffffff]'>
-                            <button
-                                type="button"
-                                className="font-jose bg-[#2a2902] font-semibold py-2 px-8 focus:outline-none focus:shadow-outline"
-                            >
-                                Cancel
-                            </button>
-                        </div>
-                        <div className='border-2 border-solid border-black rounded-[20px] bg-[#2a2902] text-[#ffffff]'>
-                            <button
-                                type="submit"
-                                className="font-jose font-semibold py-2 px-8 rounded focus:outline-none focus:shadow-outline"
-                            >
-                                Confirm
-                            </button>
-                        </div>
+                    <div className="font-jose flex justify-between items-center">
+                        <button
+                            type="button"
+                            className="font-jose bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            type="submit"
+                            className="font-jose bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        >
+                            Confirm
+                        </button>
                     </div>
                 </form>
             </div>
