@@ -35,7 +35,7 @@ export default function HomeNavbar() {
             >
                 <Link 
                     to="/signup"
-                    className="text-xl bg"
+                    className="text-xl"
                 >
                     Sign Up
                 </Link>

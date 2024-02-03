@@ -5,7 +5,7 @@ export default function HomeNavbar() {
     return (
         <div
             id="homeNavbarContainer"
-            className="h-[70px] font-jose bg-orange-1 flex items-center justify-between"
+            className="h-[70px] font-jose bg-orange-1"
         >
             {/*  maybe add a logo div here that links back to homepage */}
             <div
@@ -29,22 +29,7 @@ export default function HomeNavbar() {
                 >
                     About
                 </Link>
-            </div>
-            <div
-                className="flex items-center pr-[20px] justify-between w-[200px] border-black border-2 border-solid"
-            >
-                <Link 
-                    to="/signup"
-                    className="text-xl bg"
-                >
-                    Sign Up
-                </Link>
-                <Link 
-                    to="/login"
-                    className="text-xl"
-                >
-                    Log In
-                </Link>
+
             </div>
 
 
