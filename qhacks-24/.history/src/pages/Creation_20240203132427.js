@@ -38,7 +38,15 @@ export default function Creation() {
     }
 
     function handlePostalCodeChange(event) {
-        setPostalCode(event.target.value)
+        const enteredPostalCode = event.target.value;
+    
+        // Regular expression to match the specified format
+        const postalCodeRegex = /^[A-Za-z]\d[A-Za-z]?\d[A-Za-z]\d$/;
+    
+        // Check if the entered postal code matches the format
+        if (postalCodeRegex.test(enteredPostalCode)) {
+            setPostalCode(enteredPostalCode);
+        }
     }
 
     function handlePriceChange(event) {

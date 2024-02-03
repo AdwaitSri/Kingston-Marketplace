@@ -38,7 +38,7 @@ export default function Creation() {
     }
 
     function handlePostalCodeChange(event) {
-        setPostalCode(event.target.value)
+        setPostalCode(prevPostalCode => (event.target.value));
     }
 
     function handlePriceChange(event) {

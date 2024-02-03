@@ -18,27 +18,15 @@ export default function Creation() {
     const sellerName = "clown";  // ! IMPORTANT ! CHANGE TO THE USER'S NAME AFTERWARDS
 
     function handleTitleChange(event) {
-        setTitle(prevTitle => {
-            let newTitle = prevTitle;
-            if (event.target.value.length <= 50) {
-                newTitle = event.target.value;
-            }
-            return newTitle;
-        });
+        setTitle(prevTitle => (event.target.value));
     }
 
     function handleDescChange(event) {
-        setDesc(prevDesc => {
-            let newDesc = prevDesc;
-            if (event.target.value.length <= 150) {
-                newDesc = event.target.value;
-            }
-            return newDesc;
-        });
+        setDesc(prevDesc => (event.target.value));
     }
 
     function handlePostalCodeChange(event) {
-        setPostalCode(event.target.value)
+        setPostalCode(prevPostalCode => (event.target.value));
     }
 
     function handlePriceChange(event) {

@@ -38,7 +38,14 @@ export default function Creation() {
     }
 
     function handlePostalCodeChange(event) {
-        setPostalCode(event.target.value)
+        const enteredPostalCode = event.target.value;
+    
+        const postalCodeRegex = /^([A-Za-z]+\d+|\d+[A-Za-z]+)?([A-Za-z])?(\d)?([A-Za-z])?(\d)?([A-Za-z])?(\d)?$/;
+        alert(postalCodeRegex.test(enteredPostalCode));
+    
+        if (postalCodeRegex.test(enteredPostalCode)) {
+            setPostalCode(enteredPostalCode);
+        }
     }
 
     function handlePriceChange(event) {

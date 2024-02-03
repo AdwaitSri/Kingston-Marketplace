@@ -1,7 +1,6 @@
 // Import React and necessary hooks
 import React from 'react';
 import CreationNavbar from '../components/CreationNavbar';
-import { motion } from 'framer-motion';
 
 // The main component for the form
 export default function Creation() {
@@ -18,27 +17,15 @@ export default function Creation() {
     const sellerName = "clown";  // ! IMPORTANT ! CHANGE TO THE USER'S NAME AFTERWARDS
 
     function handleTitleChange(event) {
-        setTitle(prevTitle => {
-            let newTitle = prevTitle;
-            if (event.target.value.length <= 50) {
-                newTitle = event.target.value;
-            }
-            return newTitle;
-        });
+        setTitle(prevTitle => (event.target.value));
     }
 
     function handleDescChange(event) {
-        setDesc(prevDesc => {
-            let newDesc = prevDesc;
-            if (event.target.value.length <= 150) {
-                newDesc = event.target.value;
-            }
-            return newDesc;
-        });
+        setDesc(prevDesc => (event.target.value));
     }
 
     function handlePostalCodeChange(event) {
-        setPostalCode(event.target.value)
+        setPostalCode(prevPostalCode => (event.target.value));
     }
 
     function handlePriceChange(event) {
@@ -194,60 +181,29 @@ export default function Creation() {
                                 <p className="font-jose font-bold tracking-tight h-[25%]">{title ? title : "Placeholder Title"}</p>
                                 <p className="font-jose text-[12px] tracking-tight">Condition: {getCondition()}</p>
                                 <p className="font-jose text-[12px] relative top-[-3px] tracking-tight">Seller: {sellerName}</p>
-                                <p className="font-jose text-[12px] relative top-[-7px] tracking-tight">Location: {postalCode ? postalCode : "???"}</p>
-                                <p className="font-jose text-[20px] relative top-[-20px] text-[#237515] float-right tracking-tight">Price: ${price ? price : "???"}</p>
+                                <p className="font-jose text-[12px] relative top-[-7px] tracking-tight">Location: {postalCode ? postalCode : "Placeholder Location"}</p>
+                                <p className="font-jose text-[20px] relative top-[-20px] text-[#237515] float-right tracking-tight">Price: ${price ? price : "Placeholder Price"}</p>
                             </div>
                         </div>
                     </div>
 
-                    <div className="font-jose flex w-[70%] mx-auto my-[30px] justify-between items-center">
-
-                        <motion.div
-                            className='rounded-[20px] bg-[#2a2902] text-[#ffffff] hover:bg-[#333333]'
-                            initial={{scale: 1.0}}
-                            whileHover={{
-                                scale: 1.05,
-                                transition: {
-                                    duration: 0.25,
-                                }
-                            }}
-                            whileTap={{
-                                scale: 0.95,
-                                transition: {
-                                    duration: 0.25,
-                                }
-                            }}
-                        >
+                    <div className="font-jose flex w-[70%] mx-auto my-[20px] justify-between items-center">
+                        <div className='border-2 border-solid border-black rounded-[20px] bg-[#2a2902] text-[#ffffff]'>
                             <button
                                 type="button"
                                 className="font-jose bg-[#2a2902] font-semibold py-2 px-8 focus:outline-none focus:shadow-outline"
                             >
                                 Cancel
                             </button>
-                        </motion.div>
-                        <motion.div 
-                            className='rounded-[20px] bg-[#2a2902] text-[#ffffff] hover:bg-[#333333]'
-                            initial={{scale: 1.0}}
-                            whileHover={{
-                                scale: 1.05,
-                                transition: {
-                                    duration: 0.25,
-                                }
-                            }}
-                            whileTap={{
-                                scale: 0.95,
-                                transition: {
-                                    duration: 0.25,
-                                }
-                            }}
-                        >
+                        </div>
+                        <div className='border-2 border-solid border-black rounded-[20px] bg-[#2a2902] text-[#ffffff]'>
                             <button
                                 type="submit"
                                 className="font-jose font-semibold py-2 px-8 rounded focus:outline-none focus:shadow-outline"
                             >
                                 Confirm
                             </button>
-                        </motion.div>
+                        </div>
                     </div>
                 </form>
             </div>
