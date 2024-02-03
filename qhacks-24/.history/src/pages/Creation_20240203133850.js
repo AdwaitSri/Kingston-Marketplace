@@ -2,7 +2,6 @@
 import React from 'react';
 import CreationNavbar from '../components/CreationNavbar';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 
 // The main component for the form
 export default function Creation() {
@@ -14,10 +13,6 @@ export default function Creation() {
 
     const [condition, setCondition] = React.useState(
         ["", "", "", ""]
-    )
-
-    const [category, setCategory] = React.useState(
-        ["", "", "", "", ""]
     )
 
     const sellerName = "clown";  // ! IMPORTANT ! CHANGE TO THE USER'S NAME AFTERWARDS
@@ -66,23 +61,6 @@ export default function Creation() {
         })
     }
 
-    function handleCategoryChange(event) {
-        setCategory(prevCategory => {
-            let newCategory = "";
-            const target = event.target.id;
-
-
-            if (prevCategory[target] === "") {
-                newCategory = "checked";
-            } 
-
-            let newState = ["", "", "", "", ""];
-            newState[target] = newCategory;
-            return newState;
-        })
-        console.log(category);
-    }
-
     function getCondition() {
         let name = "";
         let index = -1;
@@ -95,22 +73,6 @@ export default function Creation() {
         const conditions = ["Brand New", "Like New", "Lightly Used", "Used"];
         if (index >= 0) {
             name = conditions[index];
-        }
-        return name;
-    }
-
-    function getCategory() {
-        let name = "";
-        let index = -1;
-        for (let i = 0; i < category.length; i++) {
-            if (category[i] !== '') {
-                index = i;
-                break;
-            }
-        }
-        const categories = ["Entertainment", "Kitchenware", "Furniture", "Electronics", "Other"];
-        if (index >= 0) {
-            name = categories[index];
         }
         return name;
     }
@@ -154,7 +116,7 @@ export default function Creation() {
                     />
                     </div>
 
-                    <div className="mb-2 flex justify-between">
+                    <div className="mb-4 flex justify-between">
                     <span className="font-jose text-gray-700 text-sm font-semibold mt-[11px]">Condition</span>
                     <div className="mt-2 w-[80%]">
                         <label className="font-jose inline-flex items-center">
@@ -172,32 +134,6 @@ export default function Creation() {
                         <label className="font-jose inline-flex items-center ml-6">
                         <input type="radio" className="form-radio" name="condition" id="3" value="Used" onChange={handleConditionChange} checked={condition[3]}/>
                         <span className="font-jose ml-2">Used</span>
-                        </label>
-                    </div>
-                    </div>
-
-                    <div className="mb-4 flex justify-between">
-                    <span className="font-jose text-gray-700 text-sm font-semibold mt-[11px]">Category</span>
-                    <div className="mt-2 w-[80%]">
-                        <label className="font-jose inline-flex items-center">
-                        <input type="radio" className="form-radio" name="condition" id="0" value="Entertainment" onChange={handleCategoryChange} checked={category[0]}/>
-                        <span className="font-jose ml-2">Entertainment</span>
-                        </label>
-                        <label className="font-jose inline-flex items-center ml-6">
-                        <input type="radio" className="form-radio" name="condition" id="1" value="Kitchenware" onChange={handleCategoryChange} checked={category[1]}/>
-                        <span className="font-jose ml-2">Kitchenware</span>
-                        </label>
-                        <label className="font-jose inline-flex items-center ml-6">
-                        <input type="radio" className="form-radio" name="condition" id="2" value="Funiture" onChange={handleCategoryChange} checked={category[2]}/>
-                        <span className="font-jose ml-2">Funiture</span>
-                        </label>
-                        <label className="font-jose inline-flex items-center ml-6">
-                        <input type="radio" className="form-radio" name="condition" id="3" value="Electronics" onChange={handleCategoryChange} checked={category[3]}/>
-                        <span className="font-jose ml-2">Electronics</span>
-                        </label>
-                        <label className="font-jose inline-flex items-center ml-6">
-                        <input type="radio" className="form-radio" name="condition" id="4" value="Other" onChange={handleCategoryChange} checked={category[4]}/>
-                        <span className="font-jose ml-2">Other</span>
                         </label>
                     </div>
                     </div>
@@ -256,11 +192,10 @@ export default function Creation() {
                             <img src="/images/logo.png" alt="placeholder" className="h-[80%]"/>
                             <div className='h-full w-full p-[10px] relative'>
                                 <p className="font-jose font-bold tracking-tight h-[25%]">{title ? title : "Placeholder Title"}</p>
-                                <p className="font-jose text-[12px] tracking-tight">Condition: {getCondition() ? getCondition() : "???"}</p>
+                                <p className="font-jose text-[12px] tracking-tight">Condition: {getCondition()}</p>
                                 <p className="font-jose text-[12px] relative top-[-3px] tracking-tight">Seller: {sellerName}</p>
                                 <p className="font-jose text-[12px] relative top-[-7px] tracking-tight">Location: {postalCode ? postalCode : "???"}</p>
-                                <p className="font-jose text-[12px] relative top-[-10px] tracking-tight">Category: {getCategory() ? getCategory() : "???"}</p>
-                                <p className="font-jose text-[24px] relative top-[-40px] text-[#237515] float-right tracking-tight">Price: ${price ? price : "???"}</p>
+                                <p className="font-jose text-[20px] relative top-[-20px] text-[#237515] float-right tracking-tight">Price: ${price ? price : "???"}</p>
                             </div>
                         </div>
                     </div>
@@ -283,14 +218,12 @@ export default function Creation() {
                                 }
                             }}
                         >
-                            <Link to="/listings">
-                                <button
-                                    type="button"
-                                    className="font-jose bg-[#2a2902] font-semibold rounded-[20px] py-2 px-8 focus:outline-none focus:shadow-outline"
-                                >
-                                    Cancel
-                                </button>
-                            </Link>
+                            <button
+                                type="button"
+                                className="font-jose bg-[#2a2902] font-semibold py-2 px-8 focus:outline-none focus:shadow-outline"
+                            >
+                                Cancel
+                            </button>
                         </motion.div>
                         <motion.div 
                             className='rounded-[20px] bg-[#2a2902] text-[#ffffff] hover:bg-[#333333]'

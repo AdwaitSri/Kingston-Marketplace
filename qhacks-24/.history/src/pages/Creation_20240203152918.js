@@ -260,7 +260,7 @@ export default function Creation() {
                                 <p className="font-jose text-[12px] relative top-[-3px] tracking-tight">Seller: {sellerName}</p>
                                 <p className="font-jose text-[12px] relative top-[-7px] tracking-tight">Location: {postalCode ? postalCode : "???"}</p>
                                 <p className="font-jose text-[12px] relative top-[-10px] tracking-tight">Category: {getCategory() ? getCategory() : "???"}</p>
-                                <p className="font-jose text-[24px] relative top-[-40px] text-[#237515] float-right tracking-tight">Price: ${price ? price : "???"}</p>
+                                <p className="font-jose text-[24px] relative top-[-35px] text-[#237515] float-right tracking-tight">Price: ${price ? price : "???"}</p>
                             </div>
                         </div>
                     </div>
