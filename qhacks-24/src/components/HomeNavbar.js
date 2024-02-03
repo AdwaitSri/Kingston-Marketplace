@@ -35,13 +35,13 @@ export default function HomeNavbar() {
             >
                 <Link 
                     to="/signup"
-                    className="text-xl w-[110px] text-center bg-black text-white hover:bg-white hover:text-black duration-150 p-[4px] pt-[6px] rounded-full tracking-tight"
+                    className="text-xl w-[110px] text-center bg-[#000000] text-[#FFFFFF] hover:bg-[#FFFFFF] hover:text-[#000000] duration-150 p-[4px] pt-[6px] rounded-full tracking-tight"
                 >
                     Sign Up
                 </Link>
                 <Link 
-                    to="/login"
-                    className="text-xl w-[110px] text-center bg-black text-white hover:bg-white hover:text-black duration-150 p-[4px] pt-[5.5px] rounded-full tracking-tight"
+                    to="/signin"
+                    className="text-xl w-[110px] text-center bg-[#000000] text-[#FFFFFF] hover:bg-[#FFFFFF] hover:text-[#000000] duration-150 p-[4px] pt-[5.5px] rounded-full tracking-tight"
                 >
                     Log In
                 </Link>

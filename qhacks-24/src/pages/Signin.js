@@ -1,26 +1,25 @@
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from "react-router-dom";
 
-
-const Signup = () => {
+const Signin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(''); // State for handling errors
-   
-    const signUp = (e) => {
+
+    const signin = (e) => {
         e.preventDefault();
         if (!email || !password) {
             setError("Please enter both email and password."); // Check if email or password is empty
             return;
         }
 
-        createUserWithEmailAndPassword(auth, email, password)
+        signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 console.log(userCredential);
-                setError('Signup complete'); // Clear error on successful sign up
+                setError('Successful login'); // Clear error on successful sign up
             })
             .catch((error) => {
                 setError(error.message); // Set error message from Firebase
@@ -47,12 +46,12 @@ const Signup = () => {
                 <div className="w-full rounded-lg bg-[#ff9d2b] shadow dark:border sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 mx-auto">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1 className="text-2xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                            Create an account
+                            Log in to your account
                         </h1>
 
                         {error && <p className="text-white">{error}</p>} {/* Display error message */}
 
-                        <form onSubmit={signUp} className="space-y-4 md:space-y-6" method="POST">
+                        <form onSubmit={signin} className="space-y-4 md:space-y-6" method="POST">
                             <div>
                                 <label htmlFor="email" className="block mb-2 text-base font-medium text-gray-900 dark:text-white">Email</label>
                                 <input type="email" name="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} 
@@ -83,8 +82,8 @@ const Signup = () => {
                         >
                             <button type="submit" className="text-[#ffffff] w-full h-full rounded-lg px-5 py-2.5">Create an account</button>
                         </motion.div>
-                            <p className="text-sm font-light text-gray-500 dark:text-gray-400">Already have an account? <a
-                                className="pl-[5px] font-medium text-blue-600 hover:underline dark:text-blue-500" href="/signin">Sign in here</a>
+                            <p className="text-sm font-light text-gray-500 dark:text-gray-400">Don't have an account? <a
+                                className="pl-[5px] font-medium text-blue-600 hover:underline dark:text-blue-500" href="/signup">Sign up here</a>
                             </p>
                         </form>
                     </div>
@@ -95,4 +94,4 @@ const Signup = () => {
     );
 };
 
-export default Signup;
+export default Signin;

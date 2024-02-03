@@ -56,16 +56,16 @@ export default function HomeNavbar() {
                     <p class="text-5xl font-semibold pt-[17%]">Your local</p>
                 </div>
                 <div class="">
-                    <p class="text-8xl font-bold text-blue-600 pt-5">City of Kingston</p>
+                    <p class="text-8xl font-bold text-[#1A68FF] pt-5">City of Kingston</p>
                 </div>
                 <div class="">
                     <p class="text-5xl font-bold my-3">Marketplace</p>
                 </div>
                 <div class="">
-                    <p class="text-3xl pt-9 text-blue-500">10,000+ Listings</p>
+                    <p class="text-3xl pt-9 text-[#00B2FF]">10,000+ Listings</p>
                 </div>
                 <div class="">
-                    <p class="text-3xl py-2 text-blue-500">2,935 Active Users</p>
+                    <p class="text-3xl py-2 text-[#00B2FF]">2,935 Active Users</p>
                 </div>
             </div>
         </div> 
