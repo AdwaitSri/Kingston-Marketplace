@@ -33,7 +33,7 @@ export default function Item() {
                 {/* Left half, image display */}
                 <div className="w-[40%] bg-red-100 flex flex-col">
                     <button
-                        className="w-fit mt-7 mx-4 pt-2 bg-yellow-100 px-3 py-1 text-xl flex flex-row hover:bg-orange-500"
+                        className="rounded-xl w-fit mt-7 mx-4 pt-2 bg-orange-300 px-3 py-1 text-xl flex flex-row hover:bg-white"
                         onClick={handleBackButtonClick}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" className='w-[30px] h-[30px] mr-1'>
@@ -56,7 +56,7 @@ export default function Item() {
                         onClick={toggleModal} // Open modal on click
                     >
                         <img
-                            src="/images/img1.jpeg"
+                            src={data[0].url}
                             alt='itempic'
                             className='w-full h-full object-cover'
                         />
@@ -78,7 +78,7 @@ export default function Item() {
 
       </button>
       <img
-        src="/images/img1.jpeg"
+        src={data[0].url}
         alt='Expanded itempic'
         className='object-contain h-[80vh] w-[80vw] max-w-[600px] max-h-[600px]'
       />
@@ -142,7 +142,7 @@ export default function Item() {
                         Interested? Contact the seller below!
                     </div>
                     <div className='w-fit mx-auto'>
-                        <button className='text-white bg-red-600 text-2xl m-3 pt-5 p-3 hover:bg-blue-600 hover:text-white duration-150'>
+                        <button className='rounded-xl text-white bg-red-600 text-2xl m-3 pt-5 p-3 hover:bg-blue-600 hover:text-white duration-150'>
                             Contact Seller via. Email/Phone
                         </button>
                     </div>

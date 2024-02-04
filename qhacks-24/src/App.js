@@ -22,6 +22,7 @@ function App() {
       title: "Test title",
       category: "Unchecked",
       seller:"Me",
+      url:"",
     },
   ]);
 

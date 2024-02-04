@@ -16,7 +16,7 @@ export default function Listings() {
     const listCollectionRef=collection(db,"listing");
     const { data, setData } = useContext(Context);
 
-    const handleClick = (condition, description, postalcode, price, title, category,seller) => {
+    const handleClick = (condition, description, postalcode, price, title, category,seller,url) => {
        
         const updatedData = [
             {
@@ -27,6 +27,7 @@ export default function Listings() {
               title: title,
               category: category,
               seller: seller,
+              url:url,
             },
         ];
         setData(updatedData);
@@ -81,6 +82,61 @@ export default function Listings() {
             categoryName: "Other",
         },
     ]
+    const selectedMaxPriceDefault = [
+        {
+            id: 0,
+            selected: false,
+            maxPrice: "10",
+        },
+        {
+            id: 1,
+            selected: false,
+            maxPrice: "25",
+        },
+        {
+            id: 2,
+            selected: false,
+            maxPrice: "50",
+        },
+        {
+            id: 3,
+            selected: false,
+            maxPrice: "100",
+        },
+        {
+            id: 4,
+            selected: false,
+            maxPrice: "250",
+        },
+        {
+            id: 5,
+            selected: false,
+            maxPrice: "500",
+        },
+        {
+            id: 6,
+            selected: false,
+            maxPrice: "1000",
+        },
+        {
+            id: 7,
+            selected: false,
+            maxPrice: "2500",
+        },
+        {
+            id: 8,
+            selected: false,
+            maxPrice: "5000",
+        },
+        {
+            id: 9,
+            selected: false,
+            maxPrice: "10000",
+        },
+    ]
+
+    const [selectedMaxPrice, setSelectedMaxPrice] = React.useState(selectedMaxPriceDefault);
+
     const [selectedCategory, setSelectedCategory] = React.useState(selectedCategoryDefault);
 
     const [search, setSearch] = React.useState('');
@@ -160,14 +216,40 @@ function getCategory(info) {
         }
         return false;
     }
+    function handleMaxPriceClick(event) {
+        setSelectedMaxPrice(prevSelectedMaxPrice => {
+            let index = -1;
+            for (let i = 0; i < prevSelectedMaxPrice.length; i++) {
+                if (prevSelectedMaxPrice[i].maxPrice === event.target.id) {
+                    index = i;
+                    break;
+                }
+            }
 
+            let newState = selectedMaxPriceDefault;
+            if (index >= 0) {
+                newState[index].selected = !prevSelectedMaxPrice[index].selected;
+            }
+
+            return newState;
+        })
+    }
+
+    function getSelectedMaxPrice() {
+        for (let i = 0; i < selectedMaxPrice.length; i++) {
+            if (selectedMaxPrice[i].selected) {
+                return selectedMaxPrice[i].maxPrice;
+            }
+        }
+        return false;
+    }
     const listingCards = listpr.map((listpr) => {
         const listCardElement = (
             <div className="flex justify-between m-[20px]">
                  <Link
                     to='/item'
                     className="w-full"
-                    onClick={() => handleClick(listpr.condition, listpr.description, listpr.postalcode, listpr.price, listpr.title, listpr.category,listpr.seller)}
+                    onClick={() => handleClick(listpr.condition, listpr.description, listpr.postalcode, listpr.price, listpr.title, listpr.category,listpr.seller,listpr.imageUrl)}
                 >
                     <div 
                         className="w-full h-[200px] bg-[#f7f7f7] flex items-center"
@@ -202,19 +284,22 @@ function getCategory(info) {
             }
         }
 
-        if (getSelectedCategory() === getCategory(listpr.category)) {
+        if (getSelectedMaxPrice() === false) {
+            match.price = true;
+        }
+        else if (parseFloat(getSelectedMaxPrice()) >= parseFloat(listpr.price)) {
+            match.price = true;
+        }
+
+        if (getSelectedCategory() === listpr.category) {
             match.category = true;
         }
         else if (getSelectedCategory() === false) {
             match.category = true;
         }
-        else {
-            ;
-        }
-
         console.log(match);
 
-        if (match.search && match.category) {
+        if (match.search && match.category && match.price) {
             return listCardElement;
         }
     });
@@ -229,6 +314,16 @@ function getCategory(info) {
         >{category.categoryName}</h1>
         )
     });
+    const filterMaxPrices = selectedMaxPrice.map(maxPrice => {
+        const styles = maxPrice.selected ? "font-jose ml-[40px] text-[#000000] text-[24px] hover:cursor-pointer" : "font-jose ml-[40px] text-[24px] text-[#aaaaaa] hover:cursor-pointer";
+        return (
+        <h1 
+            className={styles}
+            id={maxPrice.maxPrice}
+            onClick={handleMaxPriceClick}
+        >&lt; ${maxPrice.maxPrice}</h1>
+        )
+    });
 
     return (
         <div className="">
@@ -241,15 +336,21 @@ function getCategory(info) {
                 className="w-[15%] border-r-[1px] border-[#aaaaaa70]"
             >
                 <div className="flex items-center relative right-[10px]">
-                    <svg width="26" height="14" viewBox="0 0 26 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 1L13 12L25 1" stroke="black" stroke-width="2"/>
-                    </svg>
+                    
                     <h1
                         className="font-jose ml-[10px] text-[32px]"
                     >Categories</h1>
                 </div>
                 <div>
                     {filterCategories}
+                </div>
+                <div className="flex items-center relative right-[10px]">
+                    <h1
+                        className="font-jose ml-[10px] text-[32px]"
+                    >Max Price</h1>
+                </div>
+                <div>
+                    {filterMaxPrices}
                 </div>
                 
             </div>
