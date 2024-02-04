@@ -1,7 +1,6 @@
 import { keyboard } from "@testing-library/user-event/dist/keyboard";
 import React from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 
 export default function Listings() {
     const exampleData = [
@@ -11,7 +10,7 @@ export default function Listings() {
             postalcode: "K7L 0E7",
             price: "80",
             title: "Clown juice chair coffee",
-            category: "Furniture"
+            category: "furniture"
         },
         {
             condition: ["", "checked", "", ""],
@@ -19,7 +18,7 @@ export default function Listings() {
             postalcode: "K7L 1E1",
             price: "8000",
             title: "zaza table phone kevin",
-            category: "Electronics"
+            category: ["", "", "", "checked", ""]
         },
     ];
 
@@ -50,63 +49,6 @@ export default function Listings() {
             categoryName: "Other",
         },
     ]
-
-    // const selectedPriceDefault = [
-    //     {
-    //         id: 0,
-    //         selected: false,
-    //         maxPrice: "10",
-    //     },
-    //     {
-    //         id: 1,
-    //         selected: false,
-    //         maxPrice: "25",
-    //     },
-    //     {
-    //         id: 2,
-    //         selected: false,
-    //         maxPrice: "50",
-    //     },
-    //     {
-    //         id: 3,
-    //         selected: false,
-    //         maxPrice: "100",
-    //     },
-    //     {
-    //         id: 4,
-    //         selected: false,
-    //         maxPrice: "250",
-    //     },
-    //     {
-    //         id: 5,
-    //         selected: false,
-    //         maxPrice: "500",
-    //     },
-    //     {
-    //         id: 6,
-    //         selected: false,
-    //         maxPrice: "1000",
-    //     },
-    //     {
-    //         id: 7,
-    //         selected: false,
-    //         maxPrice: "2500",
-    //     },
-    //     {
-    //         id: 8,
-    //         selected: false,
-    //         maxPrice: "5000",
-    //     },
-    //     {
-    //         id: 9,
-    //         selected: false,
-    //         maxPrice: "10000",
-    //     },
-    // ]
-
-
-
-
     const [selectedCategory, setSelectedCategory] = React.useState(selectedCategoryDefault);
 
     const [search, setSearch] = React.useState('');
@@ -214,7 +156,7 @@ export default function Listings() {
                             <p className="font-jose text-[22px] tracking-tight">Condition: {getCondition(data.condition)}</p>
                             <p className="font-jose text-[22px] relative top-[-3px] tracking-tight">Seller: {sellerName}</p>
                             <p className="font-jose text-[22px] relative top-[-7px] tracking-tight">Location: {data.postalcode}</p>
-                            <p className="font-jose text-[22px] relative top-[-10px] tracking-tight">Category: {data.category}</p>
+                            <p className="font-jose text-[22px] relative top-[-10px] tracking-tight">Category: {getCategory(data.category) ? getCategory(data.category) : "???"}</p>
                             <p className="font-jose text-[36px] relative top-[-50px] right-[10px] text-[#237515] float-right tracking-tight">Price: ${data.price}</p>
                         </div>
                     </div>
@@ -237,7 +179,7 @@ export default function Listings() {
             }
         }
 
-        if (getSelectedCategory() === data.category) {
+        if (getSelectedCategory().toUpperCase() === data.category.toUpperCase()) {
             match.category = true;
         }
         else if (getSelectedCategory() === false) {
@@ -273,6 +215,9 @@ export default function Listings() {
                 className="w-[15%] border-r-[1px] border-[#aaaaaa70]"
             >
                 <div className="flex items-center relative right-[10px]">
+                    <svg width="26" height="14" viewBox="0 0 26 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L13 12L25 1" stroke="black" stroke-width="2"/>
+                    </svg>
                     <h1
                         className="font-jose ml-[10px] text-[32px]"
                     >Categories</h1>

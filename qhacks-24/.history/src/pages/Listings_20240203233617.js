@@ -50,63 +50,6 @@ export default function Listings() {
             categoryName: "Other",
         },
     ]
-
-    // const selectedPriceDefault = [
-    //     {
-    //         id: 0,
-    //         selected: false,
-    //         maxPrice: "10",
-    //     },
-    //     {
-    //         id: 1,
-    //         selected: false,
-    //         maxPrice: "25",
-    //     },
-    //     {
-    //         id: 2,
-    //         selected: false,
-    //         maxPrice: "50",
-    //     },
-    //     {
-    //         id: 3,
-    //         selected: false,
-    //         maxPrice: "100",
-    //     },
-    //     {
-    //         id: 4,
-    //         selected: false,
-    //         maxPrice: "250",
-    //     },
-    //     {
-    //         id: 5,
-    //         selected: false,
-    //         maxPrice: "500",
-    //     },
-    //     {
-    //         id: 6,
-    //         selected: false,
-    //         maxPrice: "1000",
-    //     },
-    //     {
-    //         id: 7,
-    //         selected: false,
-    //         maxPrice: "2500",
-    //     },
-    //     {
-    //         id: 8,
-    //         selected: false,
-    //         maxPrice: "5000",
-    //     },
-    //     {
-    //         id: 9,
-    //         selected: false,
-    //         maxPrice: "10000",
-    //     },
-    // ]
-
-
-
-
     const [selectedCategory, setSelectedCategory] = React.useState(selectedCategoryDefault);
 
     const [search, setSearch] = React.useState('');
