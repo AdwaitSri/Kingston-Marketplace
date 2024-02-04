@@ -73,8 +73,7 @@ export default function Listings() {
 
     function handleResetSearch(event) {
         event.preventDefault();
-        setSearch('');
-        setSearchKeywords([]);
+        alert('resetted');
     }
 
     function getCondition(info) {
@@ -169,7 +168,7 @@ export default function Listings() {
             category: false,
         }
 
-        if (searchKeywords[0] === '' || searchKeywords.length === 0) {
+        if (searchKeywords[0] === '') {
             match.search = true;
         }
         for (let i = 0; i < searchKeywords.length; i++) {
@@ -188,8 +187,6 @@ export default function Listings() {
         else {
             ;
         }
-
-        console.log(match);
 
         if (match.search && match.category) {
             return listCardElement;
@@ -239,11 +236,10 @@ export default function Listings() {
                             type="text" 
                             name="search" 
                             onChange={handleSearchChange}
-                            value={search}
                             placeholder="Type your search here"
                         />
-                        <button onClick={handleSearchSubmit} value="Search" className="border-2 border-solid border-black rounded-full px-[50px]">Search</button>
                         <button onClick={handleResetSearch} value="Reset" className="border-2 border-solid border-black rounded-full px-[50px]">Reset Search</button>
+                        <button onClick={handleSearchSubmit} value="Search" className="border-2 border-solid border-black rounded-full px-[50px]">Search</button>
                     </form>
                 </div>
 

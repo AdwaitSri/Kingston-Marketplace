@@ -1,4 +1,3 @@
-import { keyboard } from "@testing-library/user-event/dist/keyboard";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -6,18 +5,18 @@ export default function Listings() {
     const exampleData = [
         {
             condition: ["checked", "", "", ""],
-            description: "KEVIN",
+            description: "Test 2",
             postalcode: "K7L 0E7",
             price: "80",
-            title: "Clown juice chair coffee",
+            title: "Test",
             category: ["", "", "checked", "", ""]
         },
         {
             condition: ["", "checked", "", ""],
-            description: "ADWAIT",
+            description: "zazas",
             postalcode: "K7L 1E1",
             price: "8000",
-            title: "zaza table phone kevin",
+            title: "Test title",
             category: ["", "", "", "checked", ""]
         },
     ];
@@ -51,31 +50,9 @@ export default function Listings() {
     ]
     const [selectedCategory, setSelectedCategory] = React.useState(selectedCategoryDefault);
 
-    const [search, setSearch] = React.useState('');
-    const [searchKeywords, setSearchKeywords] = React.useState([]);
+
 
     const sellerName = "Clown LMAO CHANGE THIS LATER";
-
-    function handleSearchSubmit(event) {
-        event.preventDefault();
-        const keywords = search.split(' ');
-        if (search !== '') {
-            setSearchKeywords(keywords);
-        }
-    }
-
-    function handleSearchChange(event) {
-        event.preventDefault();
-        if (event.key !== 'Enter') {
-            setSearch(event.target.value);
-        }
-    }
-
-    function handleResetSearch(event) {
-        event.preventDefault();
-        setSearch('');
-        setSearchKeywords([]);
-    }
 
     function getCondition(info) {
         let name = "";
@@ -163,36 +140,15 @@ export default function Listings() {
                 </Link>
             </div>
         )
-        
-        let match = {
-            search: false,
-            category: false,
-        }
-
-        if (searchKeywords[0] === '' || searchKeywords.length === 0) {
-            match.search = true;
-        }
-        for (let i = 0; i < searchKeywords.length; i++) {
-            if (data.description.toUpperCase().includes(searchKeywords[i].toUpperCase()) || data.title.toUpperCase().includes(searchKeywords[i].toUpperCase())) {
-                match.search = true;
-                break;
-            }
-        }
 
         if (getSelectedCategory() === getCategory(data.category)) {
-            match.category = true;
+            return listCardElement;
         }
         else if (getSelectedCategory() === false) {
-            match.category = true;
+            return listCardElement;
         }
         else {
             ;
-        }
-
-        console.log(match);
-
-        if (match.search && match.category) {
-            return listCardElement;
         }
     });
 
@@ -231,19 +187,15 @@ export default function Listings() {
             <div
                 className="w-[85%]"
             >
-
                 <div className=" mx-[20px]">
-                    <form className="w-[90%] mx-auto flex justify-between" onSubmit={handleSearchSubmit}>
+                    <form className="w-[90%] mx-auto flex justify-between">
                         <input 
-                            className="border-2 border-black border-solid rounded-full w-[65%] pb-[10px] pl-[20px] pt-[13px] text-xl font-jose"
+                            className="border-2 border-black border-solid rounded-full w-[85%] pb-[10px] pl-[20px] pt-[12px] text-xl font-jose"
                             type="text" 
                             name="search" 
-                            onChange={handleSearchChange}
-                            value={search}
                             placeholder="Type your search here"
                         />
-                        <button onClick={handleSearchSubmit} value="Search" className="border-2 border-solid border-black rounded-full px-[50px]">Search</button>
-                        <button onClick={handleResetSearch} value="Reset" className="border-2 border-solid border-black rounded-full px-[50px]">Reset Search</button>
+                        <button type="submit" value="Search" className="border-2 border-solid border-black rounded-full px-[50px]">Search</button>
                     </form>
                 </div>
 

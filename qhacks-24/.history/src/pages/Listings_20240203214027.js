@@ -6,18 +6,18 @@ export default function Listings() {
     const exampleData = [
         {
             condition: ["checked", "", "", ""],
-            description: "KEVIN",
+            description: "Clown juice chair coffee",
             postalcode: "K7L 0E7",
             price: "80",
-            title: "Clown juice chair coffee",
+            title: "Test",
             category: ["", "", "checked", "", ""]
         },
         {
             condition: ["", "checked", "", ""],
-            description: "ADWAIT",
+            description: "zaza table phone kevin",
             postalcode: "K7L 1E1",
             price: "8000",
-            title: "zaza table phone kevin",
+            title: "Test title",
             category: ["", "", "", "checked", ""]
         },
     ];
@@ -62,19 +62,13 @@ export default function Listings() {
         if (search !== '') {
             setSearchKeywords(keywords);
         }
+        console.log(keywords);
     }
 
     function handleSearchChange(event) {
-        event.preventDefault();
         if (event.key !== 'Enter') {
             setSearch(event.target.value);
         }
-    }
-
-    function handleResetSearch(event) {
-        event.preventDefault();
-        setSearch('');
-        setSearchKeywords([]);
     }
 
     function getCondition(info) {
@@ -169,11 +163,11 @@ export default function Listings() {
             category: false,
         }
 
-        if (searchKeywords[0] === '' || searchKeywords.length === 0) {
+        if (searchKeywords[0] === '') {
             match.search = true;
         }
         for (let i = 0; i < searchKeywords.length; i++) {
-            if (data.description.toUpperCase().includes(searchKeywords[i].toUpperCase()) || data.title.toUpperCase().includes(searchKeywords[i].toUpperCase())) {
+            if (data.description.includes(searchKeywords[i])) {
                 match.search = true;
                 break;
             }
@@ -183,13 +177,11 @@ export default function Listings() {
             match.category = true;
         }
         else if (getSelectedCategory() === false) {
-            match.category = true;
+            return listCardElement;
         }
         else {
             ;
         }
-
-        console.log(match);
 
         if (match.search && match.category) {
             return listCardElement;
@@ -235,15 +227,13 @@ export default function Listings() {
                 <div className=" mx-[20px]">
                     <form className="w-[90%] mx-auto flex justify-between" onSubmit={handleSearchSubmit}>
                         <input 
-                            className="border-2 border-black border-solid rounded-full w-[65%] pb-[10px] pl-[20px] pt-[13px] text-xl font-jose"
+                            className="border-2 border-black border-solid rounded-full w-[85%] pb-[10px] pl-[20px] pt-[13px] text-xl font-jose"
                             type="text" 
                             name="search" 
                             onChange={handleSearchChange}
-                            value={search}
                             placeholder="Type your search here"
                         />
                         <button onClick={handleSearchSubmit} value="Search" className="border-2 border-solid border-black rounded-full px-[50px]">Search</button>
-                        <button onClick={handleResetSearch} value="Reset" className="border-2 border-solid border-black rounded-full px-[50px]">Reset Search</button>
                     </form>
                 </div>
 
