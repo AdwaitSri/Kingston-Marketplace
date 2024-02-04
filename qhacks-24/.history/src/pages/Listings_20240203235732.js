@@ -129,13 +129,10 @@ export default function Listings() {
     }
 
     function handleResetSearch(event) {
+        event.preventDefault();
         setSearch('');
         setSearchKeywords([]);
     }
-
-    React.useEffect(() => {
-        handleResetSearch();
-    }, []);
 
     function getCondition(info) {
         let name = "";
@@ -255,7 +252,7 @@ export default function Listings() {
         if (getSelectedMaxPrice() === false) {
             match.price = true;
         }
-        else if (parseFloat(getSelectedMaxPrice()) >= parseFloat(data.price)) {
+        else if (parseInt(getSelectedMaxPrice()) >= parseInt(data.price)) {
             match.price = true;
         }
 

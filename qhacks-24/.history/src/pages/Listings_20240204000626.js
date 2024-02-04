@@ -129,13 +129,10 @@ export default function Listings() {
     }
 
     function handleResetSearch(event) {
+        event.preventDefault();
         setSearch('');
         setSearchKeywords([]);
     }
-
-    React.useEffect(() => {
-        handleResetSearch();
-    }, []);
 
     function getCondition(info) {
         let name = "";

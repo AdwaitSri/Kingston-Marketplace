@@ -129,13 +129,10 @@ export default function Listings() {
     }
 
     function handleResetSearch(event) {
+        event.preventDefault();
         setSearch('');
         setSearchKeywords([]);
     }
-
-    React.useEffect(() => {
-        handleResetSearch();
-    }, []);
 
     function getCondition(info) {
         let name = "";
@@ -181,34 +178,6 @@ export default function Listings() {
         return false;
     }
 
-    function handleMaxPriceClick(event) {
-        setSelectedMaxPrice(prevSelectedMaxPrice => {
-            let index = -1;
-            for (let i = 0; i < prevSelectedMaxPrice.length; i++) {
-                if (prevSelectedMaxPrice[i].maxPrice === event.target.id) {
-                    index = i;
-                    break;
-                }
-            }
-
-            let newState = selectedMaxPriceDefault;
-            if (index >= 0) {
-                newState[index].selected = !prevSelectedMaxPrice[index].selected;
-            }
-
-            return newState;
-        })
-    }
-
-    function getSelectedMaxPrice() {
-        for (let i = 0; i < selectedMaxPrice.length; i++) {
-            if (selectedMaxPrice[i].selected) {
-                return selectedMaxPrice[i].maxPrice;
-            }
-        }
-        return false;
-    }
-
     const listingCards = exampleData.map((data) => {
         const listCardElement = (
             <div className="flex justify-between m-[20px]">
@@ -239,7 +208,6 @@ export default function Listings() {
         let match = {
             search: false,
             category: false,
-            price: false,
         }
 
         if (searchKeywords[0] === '' || searchKeywords.length === 0) {
@@ -252,21 +220,19 @@ export default function Listings() {
             }
         }
 
-        if (getSelectedMaxPrice() === false) {
-            match.price = true;
-        }
-        else if (parseFloat(getSelectedMaxPrice()) >= parseFloat(data.price)) {
-            match.price = true;
-        }
-
         if (getSelectedCategory() === data.category) {
             match.category = true;
         }
         else if (getSelectedCategory() === false) {
             match.category = true;
         }
+        else {
+            ;
+        }
 
-        if (match.search && match.category && match.price) {
+        console.log(match);
+
+        if (match.search && match.category) {
             return listCardElement;
         }
     });
@@ -279,17 +245,6 @@ export default function Listings() {
             id={category.categoryName}
             onClick={handleCategoryClick}
         >{category.categoryName}</h1>
-        )
-    });
-
-    const filterMaxPrices = selectedMaxPrice.map(maxPrice => {
-        const styles = maxPrice.selected ? "font-jose ml-[40px] text-[#000000] text-[24px] hover:cursor-pointer" : "font-jose ml-[40px] text-[24px] text-[#aaaaaa] hover:cursor-pointer";
-        return (
-        <h1 
-            className={styles}
-            id={maxPrice.maxPrice}
-            onClick={handleMaxPriceClick}
-        >&lt; ${maxPrice.maxPrice}</h1>
         )
     });
 
@@ -307,15 +262,6 @@ export default function Listings() {
                 </div>
                 <div>
                     {filterCategories}
-                </div>
-
-                <div className="flex items-center relative right-[10px]">
-                    <h1
-                        className="font-jose ml-[10px] text-[32px]"
-                    >Max Price</h1>
-                </div>
-                <div>
-                    {filterMaxPrices}
                 </div>
                 
             </div>
