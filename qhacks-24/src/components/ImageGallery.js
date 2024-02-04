@@ -33,7 +33,7 @@ export default function HomeNavbar() {
                 id="imageGalleryContainer"
                 className="w-[50%] h-[550px] m-[30px] flex-row rounded-xl font-jose z-0 relative"
             >
-                <img className={`w-full h-full rounded-xl object-cover transition-opacity duration-500 ${opacity}`} src={image}/>
+                <img className={`w-full h-full rounded-xl object-cover transition-opacity duration-500 ${opacity}`} src={image} alt="idk" />
 
                 <div class="flex absolute bottom-[5%] left-0 right-0 text-center">
                     <div className="inline-block h-[7px] w-[18%] mx-[1%] bg-[#999999] z-50 hover:bg-white duration-150" onMouseOver={() => handleMouseOver("/images/img1.jpeg")}>

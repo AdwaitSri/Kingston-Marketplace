@@ -74,7 +74,7 @@ const Navbar = () => {
 
             <div className="relative rounded-full ring-2 ring-offset-2 ring-offset-orange-300 ring-white" ref={dropdownRef}>
                 <button onClick={() => setIsDropdownOpen(!isDropdownOpen)} className="flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-orange-300 focus:ring-blue-200">
-                    <img className="h-8 w-8 rounded-full" src="/path/to/profile/image.jpg" alt="User profile" />
+                    <img className="h-8 w-8 rounded-full" src="/images/default.jpg" alt="User profile" />
                 </button>
                 
                 <div className={`origin-top-right absolute right-3 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 ${isDropdownOpen ? 'block' : 'hidden'}`}>
