@@ -88,7 +88,7 @@ export default function Creation() {
     function handleDescChange(event) {
         setDesc(prevDesc => {
             let newDesc = prevDesc;
-            if (event.target.value.length <= 50) {
+            if (event.target.value.length <= 150) {
                 newDesc = event.target.value;
             }
             return newDesc;
@@ -100,7 +100,9 @@ export default function Creation() {
     }
 
     function handlePriceChange(event) {
-        setPrice(prevPrice => (event.target.value));
+        if (!isNaN(event.target.value)) {
+            setPrice(prevPrice => (event.target.value));
+        }
     }
 
     function handleConditionChange(event) {
