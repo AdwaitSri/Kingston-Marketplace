@@ -2,12 +2,13 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
 
 const Signin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(''); // State for handling errors
+    const navigate = useNavigate(); // Instantiate useNavigate
 
     const signin = (e) => {
         e.preventDefault();
@@ -19,7 +20,8 @@ const Signin = () => {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 console.log(userCredential);
-                setError('Successful login'); // Clear error on successful sign up
+                setError(''); // Clear error on successful sign up
+                navigate('/listings'); // Redirect to listings page
             })
             .catch((error) => {
                 setError(error.message); // Set error message from Firebase
@@ -43,9 +45,9 @@ const Signin = () => {
             </div>
             <div className='flex w-[60%]'>
                 
-                <div className="w-full rounded-lg bg-[#ff9d2b] shadow dark:border sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 mx-auto">
+                <div className="w-full rounded-lg bg-[#ff9d2b] shadow sm:max-w-md xl:p-0 mx-auto">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-                        <h1 className="text-2xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                        <h1 className="text-2xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                             Log in to your account
                         </h1>
 
@@ -53,15 +55,15 @@ const Signin = () => {
 
                         <form onSubmit={signin} className="space-y-4 md:space-y-6" method="POST">
                             <div>
-                                <label htmlFor="email" className="block mb-2 text-base font-medium text-gray-900 dark:text-white">Email</label>
+                                <label htmlFor="email" className="block mb-2 text-base font-medium text-gray-900">Email</label>
                                 <input type="email" name="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} 
-                                className="outline-none bg-[#dcdcdc] hover:bg-[#f0f0f0] focus:bg-[#ffffff] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="samplemail@email.com" required />
+                                className="outline-none bg-[#dcdcdc] hover:bg-[#f0f0f0] focus:bg-[#ffffff] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-3" placeholder="samplemail@email.com" required />
                             </div>
 
                             <div>
-                                <label htmlFor="password" className="block mb-2 text-base font-medium text-gray-900 dark:text-white">Password</label>
+                                <label htmlFor="password" className="block mb-2 text-base font-medium text-gray-900">Password</label>
                                 <input type="password" name="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} 
-                                className="outline-none bg-[#dcdcdc] hover:bg-[#f0f0f0] focus:bg-[#ffffff] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-[30px]" placeholder="••••••••" required />
+                                className="outline-none bg-[#dcdcdc] hover:bg-[#f0f0f0] focus:bg-[#ffffff] text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-3 mb-[30px]" placeholder="••••••••" required />
                             </div>
 
                         <motion.div 
@@ -80,11 +82,10 @@ const Signin = () => {
                                 }
                             }}
                         >
-                            <button type="submit" className="text-[#ffffff] w-full h-full rounded-lg px-5 py-2.5" href="/listings">Log in</button>
+                            <button type="submit" className="text-[#ffffff] w-full h-full rounded-lg px-5 py-2.5">Log in</button>
                         </motion.div>
-                        
-                            <p className="text-sm font-light text-gray-500 dark:text-gray-400">Don't have an account? <a
-                                className="pl-[5px] font-medium text-blue-600 hover:underline dark:text-blue-500" href="/signup">Sign up here</a>
+                            <p className="text-sm font-light text-gray-500">Don't have an account? <a
+                                className="pl-[5px] font-medium text-blue-600 hover:underline" href="/signup">Sign up here</a>
                             </p>
                         </form>
                     </div>

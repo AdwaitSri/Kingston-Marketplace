@@ -98,7 +98,6 @@ export default function Item() {
                 {/* Right half, info display */}
                 <div className="w-[60%] bg-red-100">
                     <div className="ml-7 mt-7 mr-7 mb-1 text-5xl leading-relaxed">
-                        Product what if it goes over the line? it should print up to 50 chars.
                         {data[0].title}
                     </div>
                     <div className='italic text-gray-600 ml-8 mb-1 text-xl'>
@@ -136,7 +135,7 @@ export default function Item() {
                     </div>
 
                     <div className='mt-5 ml-7 text-2xl leading-relaxed text-gray-800'>
-                        {data[0].description} up to 150 characters of descriptiopn so I don't know what I can say here hahaha blah blah nah nahjsdugyiiehwiuorhqewiou haijsdfadsfdsbfkldsfbklh
+                        {data[0].description}
                     </div>
                     <div className='mt-5 ml-7 text-lg leading-relaxed text-gray-800'>
                         Interested? Contact the seller below!
