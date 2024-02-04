@@ -1,6 +1,6 @@
 // Import React and necessary hooks
 import React from 'react';
-import CreationNavbar from '../components/CreationNavbar';
+import CreationNavbar from '../components/NavbarSignedin';
 import {db} from "../firebase";
 import { useState } from 'react';
 import { motion } from 'framer-motion';
@@ -180,7 +180,7 @@ export default function Creation() {
                         <p className="text-[#aaaaaa] text-[10px]">(max 50 characters)</p>
                     </label>
                     <input
-                        className="font-jose shadow appearance-none border-2 w-[80%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="font-jose shadow appearance-none border-2 border-solid border-black w-[80%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         name="title"
                         onChange={handleTitleChange}
                         type="text"
@@ -195,7 +195,7 @@ export default function Creation() {
                         <p className="text-[#aaaaaa] text-[10px]">(max 150 characters)</p>
                     </label>
                     <textarea
-                        className="font-jose shadow appearance-none w-[80%] border-2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="font-jose shadow appearance-none w-[80%] border-2 border-solid border-black py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         name="description"
                         placeholder="Enter your title here"
                         onChange={handleDescChange}
@@ -255,7 +255,7 @@ export default function Creation() {
                         <p className="text-[#aaaaaa] text-[10px]">(max 50 characters)</p>
                     </label>
                     <input
-                        className="font-jose shadow appearance-none border-2 w-[80%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="font-jose shadow appearance-none border-2 border-solid border-black w-[80%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         name="seller"
                         onChange={handleSellerChange}
                         type="text"
@@ -268,7 +268,7 @@ export default function Creation() {
                         <p className="text-gray-700 text-sm font-semibold">Postal Code</p>
                     </label>
                     <input
-                        className="font-jose shadow appearance-none border-2 w-[80%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="font-jose shadow appearance-none border-2 border-solid border-black w-[80%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         name="postal-code"
                         type="text"
                         placeholder="X0X 0X0"
@@ -282,7 +282,7 @@ export default function Creation() {
                         Price
                     </label>
                     <input
-                        className="font-jose shadow appearance-none border-2 w-[80%] py-1 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="font-jose shadow appearance-none border-2 border-solid border-black w-[80%] py-1 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         name="price"
                         type="text"
                         placeholder="$Price"
