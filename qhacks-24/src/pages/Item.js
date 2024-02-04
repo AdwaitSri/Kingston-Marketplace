@@ -92,7 +92,6 @@ export default function Item() {
                         <div className="w-fit mx-auto text-2xl pt-3 text-[#237515]">
                             Price: ${data[0].price}
                         </div>
-
                     </div>
                 </div>
 

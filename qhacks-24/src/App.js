@@ -6,6 +6,7 @@ import Signup from "./pages/Signup";
 import Signin from "./pages/Signin";
 import Listing from "./pages/Listing";
 import Item from "./pages/Item";
+import About from './pages/About';
 import Context from './components/Context';
 import { useState } from 'react';
 
@@ -31,8 +32,7 @@ function App() {
             <Route path='/signin' element={<Signin></Signin>}></Route>
             <Route path='/listings' element={<Listing></Listing>}></Route>
             <Route path='/item' element={<Item></Item>}></Route>
-            <Route path='/page1' element={<Page1></Page1>}></Route>
-            <Route path='/page2' element={<Page2></Page2>}></Route>
+            <Route path='/about' element={<About></About>}></Route>
         </Routes>
       </Context.Provider>
     </div>

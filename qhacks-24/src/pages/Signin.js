@@ -80,8 +80,9 @@ const Signin = () => {
                                 }
                             }}
                         >
-                            <button type="submit" className="text-[#ffffff] w-full h-full rounded-lg px-5 py-2.5">Create an account</button>
+                            <button type="submit" className="text-[#ffffff] w-full h-full rounded-lg px-5 py-2.5" href="/listings">Log in</button>
                         </motion.div>
+                        
                             <p className="text-sm font-light text-gray-500 dark:text-gray-400">Don't have an account? <a
                                 className="pl-[5px] font-medium text-blue-600 hover:underline dark:text-blue-500" href="/signup">Sign up here</a>
                             </p>
