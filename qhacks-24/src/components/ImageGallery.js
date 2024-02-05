@@ -40,11 +40,11 @@ export default function ImageGallery() {
                     </div>
                     <div className="inline-block h-[7px] w-[18%] mx-[1%] bg-[#999999] z-50 hover:bg-white duration-150" onMouseOver={() => handleMouseOver("/images/img2.jpeg")}>
                     </div>
-                    <div className="inline-block h-[7px] w-[18%] mx-[1%] bg-[#999999] z-50 hover:bg-white duration-150" onMouseOver={() => handleMouseOver("/images/img3.jpeg")}>
+                    <div className="inline-block h-[7px] w-[18%] mx-[1%] bg-[#999999] z-50 hover:bg-white duration-150" onMouseOver={() => handleMouseOver("/images/img3.jpg")}>
                     </div>
-                    <div className="inline-block h-[7px] w-[18%] mx-[1%] bg-[#999999] z-50 hover:bg-white duration-150" onMouseOver={() => handleMouseOver("/images/img4.jpeg")}>
+                    <div className="inline-block h-[7px] w-[18%] mx-[1%] bg-[#999999] z-50 hover:bg-white duration-150" onMouseOver={() => handleMouseOver("/images/img4.jpg")}>
                     </div>
-                    <div className="inline-block h-[7px] w-[18%] mx-[1%] bg-[#999999] z-50 hover:bg-white duration-150" onMouseOver={() => handleMouseOver("/images/img5.jpeg")}>
+                    <div className="inline-block h-[7px] w-[18%] mx-[1%] bg-[#999999] z-50 hover:bg-white duration-150" onMouseOver={() => handleMouseOver("/images/img5.jpg")}>
                     </div>
                 </div>
             </div>

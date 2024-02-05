@@ -254,8 +254,8 @@ function getCategory(info) {
                     <div 
                         className="w-full h-[200px] bg-[#f7f7f7] flex items-center"
                     >
-                        <img src={listpr.imageUrl} alt="placeholder" className="h-[80%]"/>
-                        <div className='h-full w-full p-[10px] mt-[15px] relative'>
+                        <img src={listpr.imageUrl} alt="placeholder" className="w-[300px] h-[80%] object-over"/>
+                        <div className='h-full w-full p-[10px] pb-[20px] mt-[15px] relative'>
                             <p className="font-jose font-bold text-[36px] tracking-tight h-[25%]">{listpr.title}</p>
                             <p className="font-jose text-[22px] tracking-tight">Condition: {listpr.condition}</p>
                             <p className="font-jose text-[22px] relative top-[-3px] tracking-tight">Seller: {listpr.seller}</p>
