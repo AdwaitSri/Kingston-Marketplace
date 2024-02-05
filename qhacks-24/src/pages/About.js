@@ -1,10 +1,10 @@
 import React from 'react';
-import HomeNavbar from '../components/HomeNavbar'; // assuming the Navbar component is in the same directory
+import NavbarSignedin from '../components/NavbarSignedin'; // assuming the Navbar component is in the same directory
 
 const About = () => {
   return (
     <>
-      <HomeNavbar />
+      <NavbarSignedin />
       <div className="flex flex-col items-center justify-center py-12">
         <div className="flex justify-around items-center w-full max-w-6xl px-4">
           <div className="flex flex-col items-center px-10">
