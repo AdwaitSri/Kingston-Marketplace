@@ -246,7 +246,7 @@ function getCategory(info) {
     const listingCards = listpr.map((listpr) => {
         const listCardElement = (
             <div className="flex justify-between m-[20px]">
-                 <Link
+                <Link
                     to='/item'
                     className="w-full"
                     onClick={() => handleClick(listpr.condition, listpr.description, listpr.postalcode, listpr.price, listpr.title, listpr.category,listpr.seller,listpr.imageUrl)}
@@ -254,7 +254,7 @@ function getCategory(info) {
                     <div 
                         className="w-full h-[200px] bg-[#f7f7f7] flex items-center"
                     >
-                        <img src={listpr.imageUrl} alt="placeholder" className="w-[300px] h-[80%] object-over"/>
+                        <img src={listpr.imageUrl} alt="placeholder" className="w-[300px] h-[160px] pl-3 object-over"/>
                         <div className='h-full w-full p-[10px] pb-[20px] mt-[15px] relative'>
                             <p className="font-jose font-bold text-[36px] tracking-tight h-[25%]">{listpr.title}</p>
                             <p className="font-jose text-[22px] tracking-tight">Condition: {listpr.condition}</p>
@@ -367,8 +367,8 @@ function getCategory(info) {
                     value={search}
                     placeholder="Type your search here"
                 />
-                <button onClick={handleSearchSubmit} value="Search" className="border-2 border-solid border-black rounded-full px-[50px]">Search</button>
-                <button onClick={handleResetSearch} value="Reset" className="border-2 border-solid border-black rounded-full px-[50px]">Reset Search</button>
+                <button onClick={handleSearchSubmit} value="Search" className="font-jose pt-1 border-2 border-solid border-black rounded-full px-[50px]">Search</button>
+                <button onClick={handleResetSearch} value="Reset" className="font-jose pt-1 border-2 border-solid border-black rounded-full px-[50px]">Reset Search</button>
             </form>
         </div>
 
